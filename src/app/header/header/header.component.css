@@ -1,0 +1,29 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar {
+  background: #2c353b;
+  color: #fff;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 1rem;
+  vertical-align: middle;
+}
+
+ul, li{
+  display: inline;
+  padding-left: 15px;
+  color: grey;
+  font-size: medium;
+}
+a {
+  text-decoration: none;
+}
+
+.active {
+  color: white;
+}
