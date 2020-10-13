@@ -1,0 +1,37 @@
+<div fxLayout>
+  <mat-form-field class="search">
+    <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Search Video..."/>
+  </mat-form-field>
+  </div>
+  <mat-table #table [dataSource]="videosDataSource" class="mat-elevation-z8 videoList" matSort>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Video Name</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="author">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Author</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.author.name}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="categoryName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Category Name</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{getCategoryNames(element.catIds)}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="highestQuality">
+      <mat-header-cell *matHeaderCellDef>Highest Quality Format</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{getHighestFormat(element.formats)}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="releaseDate">
+      <mat-header-cell *matHeaderCellDef>Release Date</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.releaseDate}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="options">
+      <mat-header-cell *matHeaderCellDef>Options</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-raised-button title="Edit" color="primary">Edit</button>
+        <button mat-raised-button title="Delete" color="accent">Delete</button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row
+      *matHeaderRowDef="displayedColumns;sticky:true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns:displayedColumns;"></mat-row>
+  </mat-table>
