@@ -1,0 +1,52 @@
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <h3>Add Video</h3>
+  <hr/>
+  <form (submit)="onSaveVideo(videoForm)" #videoForm="ngForm" *ngIf="!isLoading">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="name"
+        [ngModel]="video?.name"
+        required
+        placeholder="Video Name"
+        #name="ngModel">
+      <mat-error *ngIf="name.invalid">Please enter a video name.</mat-error>
+    </mat-form-field>
+    <mat-form-field >
+      <mat-label>Video author</mat-label>
+      <mat-select
+      name="author"
+      required
+      placeholder="Video author"
+      #author="ngModel"
+      [ngModel]="video?.author.id">
+        <mat-option *ngFor="let author of authors" [value]="author.id">
+          {{author.name}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="author.invalid">Please choose author.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Video category</mat-label>
+      <mat-select
+        name="category"
+        required
+        placeholder="Video category"
+        #category="ngModel"
+        [ngModel]="video?.catIds"
+        multiple>
+        <mat-option *ngFor="let category of categories" [value]="category.id">{{category.name}}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="category.invalid">Please choose category.</mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit" class="mr-2">Submit</button>
+      <button
+      mat-raised-button
+      (click)="cancel()">Cancel</button>
+  </form>
+</mat-card>

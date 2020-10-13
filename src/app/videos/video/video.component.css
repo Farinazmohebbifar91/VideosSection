@@ -1,0 +1,9 @@
+mat-form-field  {
+  width: 80%;
+  display: block;
+  margin-bottom: 2rem;
+}
+
+mat-spinner {
+  margin: auto;
+}

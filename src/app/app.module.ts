@@ -9,12 +9,14 @@ import { MaterialModule } from './material.module';
 import { VideoListComponent } from './videos/video-list/video-list.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { VideoComponent } from './videos/video/video.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    VideoListComponent
+    VideoListComponent,
+    VideoComponent
   ],
   imports: [
     BrowserModule,
